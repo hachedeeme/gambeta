@@ -15,7 +15,29 @@ El sistema está desarrollado con **JavaScript** en su totalidad utilizando un s
 
 ### Instalacion del entorno en Linux
 - Instalar [MongoDB](https://www.mongodb.com/) (v2.6.10), seguir esta [guía](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) para su instalación y uso. 
-- Instalar [Nodejs](https://nodejs.org/) (v4.5.0) bajandolo el [sitio](https://nodejs.org/en/download/) oficial o por ppa con el siguiente comando (ya incluye npm 2.15.9):
+- Instalar [Nodejs](https://nodejs.org/) (v4.5.0) bajandolo el [sitio](https://nodejs.org/en/download/) oficial (ya incluye npm 2.15.9) o por ppa con los siguientes comandos :
 ```
-sudo apt-get install nodejs
+$ sudo apt-get update
+$ sudo apt-get install nodejs
+$ sudo apt-get install npm
+$ sudo apt-get install nodejs-legacy
+```
+- Instalar [Bower](https://bower.io/):
+```
+$ sudo npm install -g bower
+```
+- Instalar [Grunt](http://gruntjs.com/):
+```
+$ sudo npm install -g grunt-cli
+```
+- Para poder ejecutar el proyecto con **grunt** se debe tener previamente instalados [Ruby](https://www.ruby-lang.org/en/) y [Sass](http://sass-lang.com/). De no ser así se pueden instalar con los siguientes comandos:
+```
+$ sudo apt-get install ruby-full
+$ sudo gem install sass
+```
+
+### Poner en marcha el proyecto en linux
+Levantar mongo:
+```
+sudo mongod
 ```
