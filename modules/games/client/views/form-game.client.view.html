@@ -1,0 +1,35 @@
+<section>
+  <div class="page-header">
+    <h1>{{self.game._id ? 'Edit Game' : 'New Game'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="self.form.gameForm" class="form-horizontal" ng-submit="self.save(self.form.gameForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="self.game.name" id="name" class="form-control" placeholder="Name">
+          <!-- <div ng-messages="self.form.gameForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Game name is required.</p>
+          </div> -->
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="location">Location</label>
+          <input name="location" type="text" ng-model="self.game.location" id="location" class="form-control" placeholder="location">
+        </div>
+
+        <!-- <div class="form-group">
+          <label class="control-label" for="date">Date</label>
+          <md-datepicker ng-model="self.game.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+        </div> -->
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{self.game._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="self.error" class="text-danger">
+          <strong ng-bind="self.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
