@@ -10,7 +10,7 @@
   </div>
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
-      <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
+      <!-- <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
         <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
         <ul ng-switch-when="dropdown" class="dropdown-menu">
           <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
@@ -18,6 +18,12 @@
           </li>
         </ul>
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+      </li> -->
+      <li ui-sref-active="active">
+        <a ui-sref="games.list">Games List</a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="games.create">Games Create</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
@@ -30,8 +36,33 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
-      <li class="dropdown" dropdown>
-        <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+
+      <uib-dropdown>
+        <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
+          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+          <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" uib-dropdown-menu>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.profile">Edit Profile</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.picture">Change Profile Picture</a>
+          </li>
+          <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
+            <a ui-sref="settings.password">Change Password</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.accounts">Manage Social Accounts</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/api/auth/signout" target="_self">Signout</a>
+          </li>
+        </ul>
+      </uib-dropdown>
+      <!-- <li class="dropdown">
+        <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
           <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
           <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
         </a>
@@ -53,7 +84,7 @@
             <a href="/api/auth/signout" target="_self">Signout</a>
           </li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </div>
