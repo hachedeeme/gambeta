@@ -31,6 +31,10 @@ var GameSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
+  },
+  invites : { 
+    type : Array,
+    default : []
   }
 });
 

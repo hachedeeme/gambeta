@@ -18,6 +18,8 @@
     self.remove = remove;
     self.save = save;
 
+    // self.game.date = self.game.date ? new Date(self.game.date) : new Date();
+
     // Remove existing Game
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {

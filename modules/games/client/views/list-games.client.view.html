@@ -6,6 +6,19 @@
     <a ng-repeat="game in self.games"
        ui-sref="games.view({ gameId: game._id })"
        class="list-group-item">
+
+      <h3 class="list-group-item-text">
+        <span>Name:</span>
+        <span class="list-group-item-heading" ng-bind="game.name"></span>
+      </h3>
+      <h4 class="list-group-item-text">
+        <span>Location:</span>
+        <span class="list-group-item-heading" ng-bind="game.location"></span>
+      </h4>
+      <h4 class="list-group-item-text">
+        <span>Date:</span>
+        <span class="list-group-item-heading" ng-bind="game.date"></span>
+      </h4>
       <small class="list-group-item-text">
         Posted on
         <span ng-bind="game.created | date:'mediumDate'"></span>
@@ -13,7 +26,6 @@
         <span ng-if="game.user" ng-bind="game.user.displayName"></span>
         <span ng-if="!game.user">Deleted User</span>
       </small>
-      <h4 class="list-group-item-heading" ng-bind="game.name"></h4>
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="self.games.$resolved && !self.games.length">
